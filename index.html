@@ -262,6 +262,96 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
 }
 .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer}
 .hamburger span{width:22px;height:2px;background:#fff;border-radius:2px}
+
+/* FAC BIG BUTTONS */
+.fac-btn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.85rem;margin-top:1rem}
+.fac-big-btn{
+  display:flex;flex-direction:column;align-items:center;gap:0.4rem;
+  padding:1.3rem 0.8rem;border-radius:16px;cursor:pointer;
+  border:1.5px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.04);
+  transition:all 0.28s;position:relative;overflow:hidden;
+  font-family:'Montserrat',sans-serif;
+}
+.fac-big-btn::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(181,211,52,0.12),transparent);
+  opacity:0;transition:opacity 0.28s}
+.fac-big-btn:hover{border-color:rgba(181,211,52,0.45);transform:translateY(-4px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.35)}
+.fac-big-btn:hover::before{opacity:1}
+.fbb-icon{font-size:1.8rem;line-height:1}
+.fbb-label{font-size:0.72rem;font-weight:700;color:#fff;letter-spacing:0.5px;text-align:center}
+.fbb-count{font-size:0.62rem;font-weight:700;color:#b5d334;
+  background:rgba(181,211,52,0.12);border:1px solid rgba(181,211,52,0.25);
+  padding:0.15rem 0.55rem;border-radius:50px;letter-spacing:0.8px}
+
+/* MODAL */
+.modal-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(4,7,28,0.85);backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.3s;
+  padding:1rem;
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{
+  background:linear-gradient(145deg,#0d1450,#0a1038);
+  border:1px solid rgba(181,211,52,0.2);
+  border-radius:20px;width:100%;max-width:900px;max-height:88vh;
+  display:flex;flex-direction:column;
+  box-shadow:0 30px 80px rgba(0,0,0,0.6);
+  transform:translateY(24px) scale(0.97);transition:all 0.3s;
+}
+.modal-overlay.open .modal-box{transform:translateY(0) scale(1)}
+.modal-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.08);
+  flex-shrink:0;
+}
+.modal-head-left{display:flex;flex-direction:column;gap:4px}
+.modal-htag{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b5d334}
+.modal-htitle{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:900;color:#fff}
+.modal-close{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
+  color:#fff;font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;flex-shrink:0;
+}
+.modal-close:hover{background:rgba(255,80,80,0.2);border-color:rgba(255,80,80,0.4)}
+.modal-tabs{
+  display:flex;gap:0.4rem;padding:0.9rem 1.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  flex-wrap:wrap;flex-shrink:0;
+}
+.modal-tab{padding:0.35rem 0.9rem;border-radius:50px;cursor:pointer;
+  border:1.5px solid rgba(255,255,255,0.1);background:transparent;
+  color:rgba(255,255,255,0.5);font-size:0.68rem;font-weight:600;
+  font-family:'Montserrat',sans-serif;transition:all 0.2s}
+.modal-tab:hover{border-color:rgba(181,211,52,0.35);color:#b5d334}
+.modal-tab.active{background:#b5d334;border-color:#b5d334;color:#0b1040;font-weight:700;
+  animation:btnShimmer 3s linear infinite;background-size:200%}
+.modal-body{overflow-y:auto;padding:1.2rem 1.5rem 1.5rem;flex:1}
+.modal-body::-webkit-scrollbar{width:5px}
+.modal-body::-webkit-scrollbar-track{background:rgba(255,255,255,0.03)}
+.modal-body::-webkit-scrollbar-thumb{background:rgba(181,211,52,0.3);border-radius:3px}
+.modal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0.75rem}
+.modal-cta{
+  margin-top:1.2rem;padding:1rem 1.3rem;
+  background:rgba(181,211,52,0.07);border:1px solid rgba(181,211,52,0.18);
+  border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+}
+.modal-cta-text{font-size:0.8rem;color:rgba(255,255,255,0.7);line-height:1.5}
+.modal-cta-text strong{color:#fff;display:block;margin-bottom:2px}
+
+@media(max-width:680px){
+  .fac-btn-grid{grid-template-columns:repeat(2,1fr)}
+  .modal-grid{grid-template-columns:1fr}
+}
+@media(max-width:400px){
+  .fac-btn-grid{grid-template-columns:repeat(2,1fr)}
+}
+
 </style>
 </head>
 <body>
@@ -271,17 +361,17 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="ticker">
-    Inscripciones abiertas 2025
+    Inscripciones abiertas 2026
     <span class="tick-dot">+</span>
     35 carreras modalidad online
     <span class="tick-dot">+</span>
     Titulos con validez nacional
     <span class="tick-dot">+</span>
-    Unidad de Apoyo Academico Avellaneda
+    Calle 14 N° 581, Avellaneda, Santa Fe
     <span class="tick-dot">+</span>
     WhatsApp +54 9 3482 21-8923
     <span class="tick-dot">+</span>
-    Inscripciones abiertas 2025
+    Inscripciones abiertas 2026
     <span class="tick-dot">+</span>
     Modalidad presencial y online disponible
     <span class="tick-dot">+</span>
@@ -295,7 +385,6 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
     <nav id="main-nav">
       <a onclick="goTo('carreras')">Carreras</a>
       <a onclick="goTo('sobre')">Institucional</a>
-      <a onclick="goTo('galeria')">Vida universitaria</a>
       <a onclick="goTo('ubicacion')">Ubicacion</a>
       <a onclick="goTo('contacto')">Contacto</a>
       <a onclick="goTo('contacto')" class="nav-cta">Inscribite</a>
@@ -342,21 +431,22 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
 
 <!-- CARRERAS -->
 <div class="section" id="carreras">
-  <div class="reveal">
-    <span class="stag">Oferta academica</span>
-    <span class="stitle" style="margin-left:0.8rem">Carreras <em>online</em></span>
-    <div class="fac-tabs">
-      <button class="fac-tab active" onclick="filterFac('all',this)">Todas (30+)</button>
-      <button class="fac-tab" onclick="filterFac('eco',this)">Cs. Economicas</button>
-      <button class="fac-tab" onclick="filterFac('edu',this)">Cs. Educacion</button>
-      <button class="fac-tab" onclick="filterFac('jur',this)">Cs. Juridicas</button>
-      <button class="fac-tab" onclick="filterFac('ing',this)">Ingenieria</button>
-      <button class="fac-tab" onclick="filterFac('com',this)">Comunicacion</button>
-      <button class="fac-tab" onclick="filterFac('hos',this)">Hospitalidad</button>
-      <button class="fac-tab" onclick="filterFac('med',this)">Cs. Medicas</button>
+  <div class="reveal" style="text-align:center;padding:1rem 0 0.5rem">
+    <span class="stag" style="justify-content:center">Oferta academica</span>
+    <div class="stitle" style="display:block;margin:0.6rem 0 0.5rem;font-size:clamp(1.5rem,2.8vw,2.2rem)">Carreras <em>online 2026</em></div>
+    <p style="font-size:0.85rem;color:var(--muted);max-width:520px;margin:0 auto 1.8rem;line-height:1.65">Mas de 30 carreras universitarias 100% virtuales, organizadas por area. Hace click en el area que te interesa para ver la oferta completa.</p>
+    <div class="fac-btn-grid">
+      <button class="fac-big-btn" onclick="openModal('all')"><span class="fbb-icon">🎓</span><span class="fbb-label">Ver todas</span><span class="fbb-count">30+</span></button>
+      <button class="fac-big-btn" onclick="openModal('eco')"><span class="fbb-icon">📊</span><span class="fbb-label">Cs. Economicas</span><span class="fbb-count">8</span></button>
+      <button class="fac-big-btn" onclick="openModal('edu')"><span class="fbb-icon">📚</span><span class="fbb-label">Cs. Educacion</span><span class="fbb-count">6</span></button>
+      <button class="fac-big-btn" onclick="openModal('jur')"><span class="fbb-icon">⚖️</span><span class="fbb-label">Cs. Juridicas</span><span class="fbb-count">6</span></button>
+      <button class="fac-big-btn" onclick="openModal('ing')"><span class="fbb-icon">⚙️</span><span class="fbb-label">Ingenieria</span><span class="fbb-count">2</span></button>
+      <button class="fac-big-btn" onclick="openModal('com')"><span class="fbb-icon">📡</span><span class="fbb-label">Comunicacion</span><span class="fbb-count">2</span></button>
+      <button class="fac-big-btn" onclick="openModal('hos')"><span class="fbb-icon">🏨</span><span class="fbb-label">Hospitalidad</span><span class="fbb-count">3</span></button>
+      <button class="fac-big-btn" onclick="openModal('med')"><span class="fbb-icon">💊</span><span class="fbb-label">Cs. Medicas</span><span class="fbb-count">1</span></button>
     </div>
   </div>
-  <div class="carreras-grid reveal r1" id="carr-grid">
+  <div class="carreras-grid" id="carr-grid" style="display:none">
 
     <div class="car-card" data-fac="eco"><span class="car-tipo tipo-tec">Tecnicatura</span><div class="car-nombre">Tec. Univ. en Administracion de PYMES</div><div class="car-fac">Cs. Economicas</div><div class="car-online">Online</div></div>
     <div class="car-card" data-fac="eco"><span class="car-tipo tipo-lic">Ciclo Complementario</span><div class="car-nombre">Lic. en Marketing</div><div class="car-fac">Cs. Economicas</div><div class="car-online">Online</div></div>
@@ -407,55 +497,13 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
   </div>
 </div>
 
-<!-- GALERIA VIDA UNIVERSITARIA -->
-<div class="imgs-section" id="galeria">
-  <div class="imgs-inner">
-    <div class="imgs-title-row reveal">
-      <span class="stag">Vida universitaria</span>
-      <span class="stitle" style="margin-left:0.8rem">Presencial y <em>online</em></span>
-    </div>
-    <div class="imgs-grid reveal r1">
-      <!-- BIG LEFT -->
-      <div class="img-card big">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&fit=crop" alt="Estudiantes trabajando juntos presencialmente" loading="lazy">
-        <div class="img-label"><span class="img-dot"></span>Trabajo en equipo</div>
-        <div class="img-badge">Presencial</div>
-      </div>
-      <!-- TOP RIGHT -->
-      <div class="img-card">
-        <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&q=80&fit=crop" alt="Estudiante en clase online con laptop" loading="lazy">
-        <div class="img-label"><span class="img-dot"></span>Clases online</div>
-        <div class="img-badge">Online</div>
-      </div>
-      <!-- TOP RIGHT 2 -->
-      <div class="img-card">
-        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80&fit=crop" alt="Estudiante estudiando con libros" loading="lazy">
-        <div class="img-label"><span class="img-dot"></span>Aprendizaje</div>
-        <div class="img-badge">Formacion</div>
-      </div>
-      <!-- BOTTOM RIGHT -->
-      <div class="img-card">
-        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=600&q=80&fit=crop" alt="Presentacion en aula universitaria" loading="lazy">
-        <div class="img-label"><span class="img-dot"></span>Aula universitaria</div>
-        <div class="img-badge">Presencial</div>
-      </div>
-      <!-- BOTTOM RIGHT 2 -->
-      <div class="img-card">
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80&fit=crop" alt="Estudiante online con videollamada" loading="lazy">
-        <div class="img-label"><span class="img-dot"></span>Campus virtual</div>
-        <div class="img-badge">Online</div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- UBICACION -->
 <div class="ubic-section" id="ubicacion">
   <div class="ubic-inner">
     <div class="reveal">
       <span class="stag" style="display:inline-flex;margin-bottom:0.7rem">Donde estamos</span>
-      <div class="stitle" style="font-size:1.3rem;display:block;margin-bottom:1.1rem">Encontranos en <em>Avellaneda</em></div>
-      <div class="contact-row"><div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="ci-label">Direccion</div><div class="ci-val">Unidad de Apoyo Academico<br>Avellaneda, Buenos Aires</div></div></div>
+      <div class="stitle" style="font-size:1.3rem;display:block;margin-bottom:1.1rem">Encontranos en <em>Avellaneda, Santa Fe</em></div>
+      <div class="contact-row"><div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="ci-label">Direccion</div><div class="ci-val">Calle 14 N° 581<br>Avellaneda, Santa Fe</div></div></div>
       <div class="contact-row"><div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="ci-label">WhatsApp</div><div class="ci-val">+54 9 3482 21-8923</div></div></div>
       <div class="contact-row"><div class="ci-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div><div><div class="ci-label">Instagram</div><div class="ci-val">@ufasta.avellaneda</div></div></div>
       <div class="social-row">
@@ -465,7 +513,7 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
       </div>
     </div>
     <div class="map-wrap reveal r2">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26294!2d-58.3653!3d-34.6617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd3b8e6b7f0e7%3A0x0!2sAvellaneda%2C%20Buenos%20Aires!5e0!3m2!1ses!2sar" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13450.12!2d-59.6667!3d-29.1167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b4da0be6e29b4b%3A0x0!2sAvellaneda%2C%20Santa%20Fe!5e0!3m2!1ses!2sar" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa"></iframe>
     </div>
   </div>
 </div>
@@ -475,13 +523,24 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
   <div class="cc-inner">
     <div class="form-card reveal">
       <div class="form-title">Solicita informacion</div>
-      <div class="form-sub">Un asesor te contacta en menos de 24 hs.</div>
+      <div class="form-sub">Completa el formulario y un asesor te contacta en menos de 24 hs habiles.</div>
       <div class="form-row">
-        <div class="fg"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
-        <div class="fg"><label>Apellido</label><input type="text" placeholder="Tu apellido"></div>
+        <div class="fg"><label>Nombre *</label><input type="text" placeholder="Tu nombre" required></div>
+        <div class="fg"><label>Apellido *</label><input type="text" placeholder="Tu apellido" required></div>
       </div>
-      <div class="fg"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
-      <div class="fg"><label>WhatsApp</label><input type="tel" placeholder="+54 11 0000-0000"></div>
+      <div class="fg"><label>Email *</label><input type="email" placeholder="tu@email.com" required></div>
+      <div class="fg"><label>WhatsApp *</label><input type="tel" placeholder="+54 11 0000-0000" required></div>
+      <div class="fg"><label>Ciudad / Provincia</label><input type="text" placeholder="Donde vivís"></div>
+      <div class="fg"><label>Nivel de estudio alcanzado</label>
+        <select>
+          <option value="">Selecciona...</option>
+          <option>Secundario completo</option>
+          <option>Terciario en curso</option>
+          <option>Terciario completo</option>
+          <option>Universitario en curso</option>
+          <option>Universitario completo</option>
+        </select>
+      </div>
       <div class="fg"><label>Carrera de interes</label>
         <select>
           <option value="">Selecciona...</option>
@@ -528,7 +587,6 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
     <div class="foot-links">
       <a onclick="goTo('carreras')">Carreras</a>
       <a onclick="goTo('sobre')">Institucional</a>
-      <a onclick="goTo('galeria')">Galeria</a>
       <a onclick="goTo('ubicacion')">Ubicacion</a>
       <a onclick="goTo('contacto')">Contacto</a>
       <a href="https://www.ufasta.edu.ar" target="_blank">ufasta.edu.ar</a>
@@ -538,9 +596,40 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
       <a class="fsb" href="https://wa.me/5493482218923" target="_blank"><svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)" stroke="none">iewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
       <a class="fsb" href="https://www.ufasta.edu.ar" target="_blank"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
     </div>
-    <div class="foot-copy">&copy; 2025 Universidad FASTA – Unidad de Apoyo Academico Avellaneda. Todos los derechos reservados.</div>
+    <div class="foot-copy">&copy; 2026 Universidad FASTA – Unidad de Apoyo Academico Avellaneda. Todos los derechos reservados.</div>
   </div>
 </footer>
+
+
+<!-- MODAL CARRERAS -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="modal-htag">Oferta academica 2026 · 100% Online</span>
+        <span class="modal-htitle" id="modalTitle">Todas las carreras</span>
+      </div>
+      <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    </div>
+    <div class="modal-tabs" id="modalTabs">
+      <button class="modal-tab active" onclick="modalFilter('all',this)">Todas (30+)</button>
+      <button class="modal-tab" onclick="modalFilter('eco',this)">Cs. Economicas</button>
+      <button class="modal-tab" onclick="modalFilter('edu',this)">Cs. Educacion</button>
+      <button class="modal-tab" onclick="modalFilter('jur',this)">Cs. Juridicas</button>
+      <button class="modal-tab" onclick="modalFilter('ing',this)">Ingenieria</button>
+      <button class="modal-tab" onclick="modalFilter('com',this)">Comunicacion</button>
+      <button class="modal-tab" onclick="modalFilter('hos',this)">Hospitalidad</button>
+      <button class="modal-tab" onclick="modalFilter('med',this)">Cs. Medicas</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid" id="modalGrid"></div>
+      <div class="modal-cta">
+        <div class="modal-cta-text"><strong>Consultas e inscripciones abiertas 2026</strong>Contactanos y un asesor te guia en el proceso de inscripcion.</div>
+        <a href="https://wa.me/5493482218923" target="_blank" class="btn-g" style="font-size:0.78rem;padding:0.6rem 1.3rem">Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div><!-- /page-wrap -->
 
@@ -676,6 +765,88 @@ function handleForm(btn){
   btn.style.background='linear-gradient(135deg,#2ecc71,#27ae60)';
   setTimeout(()=>{btn.textContent='Enviar solicitud';btn.style.background='';},3200);
 }
+
+// ── MODAL CARRERAS ──
+const CARRERAS = [
+  {fac:'eco',tipo:'tipo-tec',tipoLabel:'Tecnicatura',nombre:'Tec. Univ. en Administracion de PYMES',area:'Cs. Economicas'},
+  {fac:'eco',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Marketing',area:'Cs. Economicas'},
+  {fac:'eco',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Administracion de Empresas',area:'Cs. Economicas'},
+  {fac:'eco',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Gestion del Talento Humano',area:'Cs. Economicas'},
+  {fac:'eco',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Turismo',area:'Cs. Economicas'},
+  {fac:'eco',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Desarrollo de Negocios Digitales',area:'Cs. Economicas'},
+  {fac:'eco',tipo:'tipo-grado',tipoLabel:'Grado',nombre:'Contador Publico',area:'Cs. Economicas'},
+  {fac:'eco',tipo:'tipo-grado',tipoLabel:'Grado',nombre:'Licenciatura en Recursos Humanos',area:'Cs. Economicas'},
+  {fac:'edu',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Educacion',area:'Cs. de la Educacion'},
+  {fac:'edu',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Educacion Fisica',area:'Cs. de la Educacion'},
+  {fac:'edu',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Ingles',area:'Cs. de la Educacion'},
+  {fac:'edu',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Tecnologia Educativa',area:'Cs. de la Educacion'},
+  {fac:'edu',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Psicopedagogia',area:'Cs. de la Educacion'},
+  {fac:'edu',tipo:'tipo-prof',tipoLabel:'Profesorado',nombre:'Prof. Universitario Nivel Secundario y Superior',area:'Cs. de la Educacion'},
+  {fac:'jur',tipo:'tipo-grado',tipoLabel:'Grado',nombre:'Abogacia',area:'Cs. Juridicas y Sociales'},
+  {fac:'jur',tipo:'tipo-grado',tipoLabel:'Grado',nombre:'Martillero y Corredor Publico',area:'Cs. Juridicas y Sociales'},
+  {fac:'jur',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Archivologia',area:'Cs. Juridicas y Sociales'},
+  {fac:'jur',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Seguridad Ciudadana',area:'Cs. Juridicas y Sociales'},
+  {fac:'jur',tipo:'tipo-tec',tipoLabel:'Tecnicatura',nombre:'Tec. en Seguridad Ciudadana',area:'Cs. Juridicas y Sociales'},
+  {fac:'jur',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Corretaje Inmobiliario',area:'Cs. Juridicas y Sociales'},
+  {fac:'ing',tipo:'tipo-tec',tipoLabel:'Tecnicatura',nombre:'Tec. en Higiene y Seguridad en el Trabajo',area:'Ingenieria'},
+  {fac:'ing',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Higiene y Seguridad en el Trabajo',area:'Ingenieria'},
+  {fac:'com',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Periodismo',area:'Periodismo y Comunicacion'},
+  {fac:'com',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Diseno y Comunicacion Transmedia',area:'Periodismo y Comunicacion'},
+  {fac:'med',tipo:'tipo-tec',tipoLabel:'Tecnicatura',nombre:'Tec. Univ. en Acompanante Terapeutico',area:'Cs. Medicas'},
+  {fac:'hos',tipo:'tipo-tec',tipoLabel:'Tecnicatura',nombre:'Tec. Universitaria en Gastronomia',area:'Hospitalidad'},
+  {fac:'hos',tipo:'tipo-tec',tipoLabel:'Tecnicatura',nombre:'Tec. Universitaria en Hoteleria',area:'Hospitalidad'},
+  {fac:'hos',tipo:'tipo-tec',tipoLabel:'Tecnicatura',nombre:'Tec. Universitaria en Turismo',area:'Hospitalidad'},
+];
+
+const FAC_NAMES = {all:'Todas las carreras',eco:'Cs. Economicas',edu:'Cs. de la Educacion',jur:'Cs. Juridicas y Sociales',ing:'Ingenieria',com:'Periodismo y Comunicacion',hos:'Hospitalidad',med:'Cs. Medicas'};
+
+function renderModal(fac){
+  const grid = document.getElementById('modalGrid');
+  const list = fac==='all' ? CARRERAS : CARRERAS.filter(c=>c.fac===fac);
+  grid.innerHTML = list.map(c=>`
+    <div class="car-card" style="cursor:default">
+      <span class="car-tipo ${c.tipo}">${c.tipoLabel}</span>
+      <div class="car-nombre">${c.nombre}</div>
+      <div class="car-fac">${c.area}</div>
+      <div class="car-online">Online · 100% Virtual</div>
+    </div>`).join('');
+}
+
+function openModal(fac){
+  const overlay = document.getElementById('modalOverlay');
+  document.getElementById('modalTitle').textContent = FAC_NAMES[fac] || 'Todas las carreras';
+  // set active tab
+  document.querySelectorAll('.modal-tab').forEach(t=>{
+    t.classList.toggle('active', t.textContent.toLowerCase().includes(fac==='all'?'todas':FAC_NAMES[fac]?.split(' ')[0]?.toLowerCase()||'x'));
+  });
+  // easier: find by onclick
+  document.querySelectorAll('.modal-tab').forEach(t=>{
+    const fn = t.getAttribute('onclick')||'';
+    t.classList.toggle('active', fn.includes("'"+fac+"'"));
+  });
+  renderModal(fac);
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function closeModalOutside(e){
+  if(e.target===document.getElementById('modalOverlay')) closeModal();
+}
+
+function modalFilter(fac,btn){
+  document.querySelectorAll('.modal-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('modalTitle').textContent = FAC_NAMES[fac] || 'Todas las carreras';
+  renderModal(fac);
+}
+
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
 </script>
 </body>
 </html>
