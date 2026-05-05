@@ -192,6 +192,19 @@ nav a:hover{color:#fff;background:var(--glass)}
 .soc-web:hover{background:rgba(255,255,255,0.12)}
 .map-wrap{border-radius:14px;overflow:hidden;height:300px;border:1px solid var(--glass-b)}
 .map-wrap iframe{width:100%;height:100%;border:none}
+.btn-como-llegar{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-top:0.85rem;width:100%;
+  padding:0.75rem 1.2rem;border-radius:10px;text-decoration:none;
+  font-size:0.82rem;font-weight:700;font-family:'Montserrat',sans-serif;
+  background:linear-gradient(135deg,#b5d334,#d4f04a,#8fa820);
+  background-size:200%;color:#0b1040;
+  animation:btnShimmer 3s linear infinite;
+  box-shadow:0 0 18px rgba(181,211,52,0.3),0 4px 14px rgba(181,211,52,0.2);
+  transition:all 0.25s;position:relative;overflow:hidden;
+}
+.btn-como-llegar::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:rgba(255,255,255,0.25);transform:skewX(-20deg);animation:btnSweep 3s ease-in-out infinite}
+.btn-como-llegar:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(181,211,52,0.5),0 8px 22px rgba(181,211,52,0.3)}
 
 /* CONTACTO */
 .contacto-compact{padding:2.5rem 1.5rem}
@@ -438,11 +451,11 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
     <div class="stitle" style="display:block;margin:0.6rem 0 0.5rem;font-size:clamp(1.5rem,2.8vw,2.2rem)">Carreras <em>online 2026</em></div>
     <p style="font-size:0.85rem;color:var(--muted);max-width:520px;margin:0 auto 1.8rem;line-height:1.65">Mas de 35 carreras universitarias 100% virtuales, organizadas por area. Hace click en el area que te interesa para ver la oferta completa.</p>
     <div class="fac-btn-grid">
-      <button class="fac-big-btn" onclick="openModal('all')"><span class="fbb-icon">🎓</span><span class="fbb-label">Ver todas</span><span class="fbb-count">35+</span></button>
-      <button class="fac-big-btn" onclick="openModal('eco')"><span class="fbb-icon">📊</span><span class="fbb-label">Cs. Economicas</span><span class="fbb-count">8</span></button>
-      <button class="fac-big-btn" onclick="openModal('edu')"><span class="fbb-icon">📚</span><span class="fbb-label">Cs. Educacion</span><span class="fbb-count">6</span></button>
-      <button class="fac-big-btn" onclick="openModal('jur')"><span class="fbb-icon">⚖️</span><span class="fbb-label">Cs. Juridicas</span><span class="fbb-count">6</span></button>
-      <button class="fac-big-btn" onclick="openModal('ing')"><span class="fbb-icon">⚙️</span><span class="fbb-label">Ingenieria</span><span class="fbb-count">4</span></button>
+      <button class="fac-big-btn" onclick="openModal('all')"><span class="fbb-icon">🎓</span><span class="fbb-label">Ver todas</span><span class="fbb-count">42+</span></button>
+      <button class="fac-big-btn" onclick="openModal('eco')"><span class="fbb-icon">📊</span><span class="fbb-label">Cs. Economicas</span><span class="fbb-count">10</span></button>
+      <button class="fac-big-btn" onclick="openModal('edu')"><span class="fbb-icon">📚</span><span class="fbb-label">Cs. Educacion</span><span class="fbb-count">8</span></button>
+      <button class="fac-big-btn" onclick="openModal('jur')"><span class="fbb-icon">⚖️</span><span class="fbb-label">Cs. Juridicas</span><span class="fbb-count">7</span></button>
+      <button class="fac-big-btn" onclick="openModal('ing')"><span class="fbb-icon">⚙️</span><span class="fbb-label">Ingenieria</span><span class="fbb-count">5</span></button>
       <button class="fac-big-btn" onclick="openModal('com')"><span class="fbb-icon">📡</span><span class="fbb-label">Comunicacion</span><span class="fbb-count">5</span></button>
       <button class="fac-big-btn" onclick="openModal('hos')"><span class="fbb-icon">🏨</span><span class="fbb-label">Hospitalidad</span><span class="fbb-count">3</span></button>
       <button class="fac-big-btn" onclick="openModal('med')"><span class="fbb-icon">💊</span><span class="fbb-label">Cs. Medicas</span><span class="fbb-count">1</span></button>
@@ -515,8 +528,14 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
         <a href="https://www.ufasta.edu.ar" target="_blank" class="soc-web"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Web</a>
       </div>
     </div>
-    <div class="map-wrap reveal r2">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13450.12!2d-59.6667!3d-29.1167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b4da0be6e29b4b%3A0x0!2sAvellaneda%2C%20Santa%20Fe!5e0!3m2!1ses!2sar" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa"></iframe>
+    <div class="reveal r2">
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.2!2d-59.6573698!3d-29.1185967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x944eb09d75f8760f%3A0xbaa8b45101eb0939!2sJoaquin%20Bonaldo!5e0!3m2!1ses!2sar!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Universidad FASTA Avellaneda Santa Fe"></iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/Hz4eATvzwdpghn5KA" target="_blank" class="btn-como-llegar">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        Como llegar
+      </a>
     </div>
   </div>
 </div>
@@ -528,14 +547,14 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
       <div class="form-title">Solicita informacion</div>
       <div class="form-sub">Completa el formulario y un asesor te contacta en menos de 24 hs habiles.</div>
       <div class="form-row">
-        <div class="fg"><label>Nombre *</label><input type="text" placeholder="Tu nombre" required></div>
-        <div class="fg"><label>Apellido *</label><input type="text" placeholder="Tu apellido" required></div>
+        <div class="fg"><label>Nombre *</label><input id="f_nombre" type="text" placeholder="Tu nombre" required></div>
+        <div class="fg"><label>Apellido *</label><input id="f_apellido" type="text" placeholder="Tu apellido" required></div>
       </div>
-      <div class="fg"><label>Email *</label><input type="email" placeholder="tu@email.com" required></div>
-      <div class="fg"><label>WhatsApp *</label><input type="tel" placeholder="+54 11 0000-0000" required></div>
-      <div class="fg"><label>Ciudad / Provincia</label><input type="text" placeholder="Donde vivís"></div>
+      <div class="fg"><label>Email *</label><input id="f_email" type="email" placeholder="tu@email.com" required></div>
+      <div class="fg"><label>WhatsApp *</label><input id="f_tel" type="tel" placeholder="+54 11 0000-0000" required></div>
+      <div class="fg"><label>Ciudad / Provincia</label><input id="f_ciudad" type="text" placeholder="Donde vivís"></div>
       <div class="fg"><label>Nivel de estudio alcanzado</label>
-        <select>
+        <select id="f_nivel">
           <option value="">Selecciona...</option>
           <option>Secundario completo</option>
           <option>Terciario en curso</option>
@@ -545,7 +564,7 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
         </select>
       </div>
       <div class="fg"><label>Carrera de interes</label>
-        <select>
+        <select id="f_carrera">
           <option value="">Selecciona...</option>
           <optgroup label="Cs. Economicas"><option>Tec. Administracion de PYMES</option><option>Lic. en Marketing</option><option>Lic. Administracion de Empresas</option><option>Lic. Gestion del Talento Humano</option><option>Lic. Negocios Digitales</option><option>Contador Publico</option></optgroup>
           <optgroup label="Cs. Educacion"><option>Lic. en Educacion</option><option>Lic. Psicopedagogia</option><option>Lic. Tecnologia Educativa</option><option>Profesorado Universitario</option></optgroup>
@@ -556,8 +575,8 @@ footer{border-top:1px solid var(--glass-b);padding:1.8rem 1.5rem 1.4rem}
           <optgroup label="Cs. Medicas"><option>Tec. Acompanante Terapeutico</option></optgroup>
         </select>
       </div>
-      <div class="fg"><label>Mensaje (opcional)</label><textarea placeholder="Tenes alguna consulta?"></textarea></div>
-      <button class="btn-form" onclick="handleForm(this)">Enviar solicitud</button>
+      <div class="fg"><label>Mensaje (opcional)</label><textarea id="f_mensaje" placeholder="Tenes alguna consulta?"></textarea></div>
+      <button class="btn-form" onclick="handleForm(this)">Enviar solicitud por WhatsApp</button>
     </div>
     <div class="cta-box reveal r2">
       <div>
@@ -765,9 +784,53 @@ window.addEventListener('scroll',()=>
 
 // ── FORM ──
 function handleForm(btn){
-  btn.textContent='Solicitud enviada';
-  btn.style.background='linear-gradient(135deg,#2ecc71,#27ae60)';
-  setTimeout(()=>{btn.textContent='Enviar solicitud';btn.style.background='';},3200);
+  const nombre   = document.getElementById('f_nombre').value.trim();
+  const apellido = document.getElementById('f_apellido').value.trim();
+  const email    = document.getElementById('f_email').value.trim();
+  const tel      = document.getElementById('f_tel').value.trim();
+  const ciudad   = document.getElementById('f_ciudad').value.trim();
+  const nivel    = document.getElementById('f_nivel').value.trim();
+  const carrera  = document.getElementById('f_carrera').value.trim();
+  const mensaje  = document.getElementById('f_mensaje').value.trim();
+
+  // Validacion campos obligatorios
+  if(!nombre || !apellido || !email || !tel){
+    [
+      {id:'f_nombre',val:nombre},
+      {id:'f_apellido',val:apellido},
+      {id:'f_email',val:email},
+      {id:'f_tel',val:tel}
+    ].forEach(f=>{
+      const el = document.getElementById(f.id);
+      if(!f.val){ el.style.borderColor='#ff6060'; el.focus(); }
+      else el.style.borderColor='';
+    });
+    return;
+  }
+
+  // Armar mensaje para WhatsApp
+  let msg = '🎓 *CONSULTA DE INSCRIPCION - Universidad FASTA Avellaneda*\n\n';
+  msg += '👤 *Datos del interesado:*\n';
+  msg += `• Nombre y apellido: ${nombre} ${apellido}\n`;
+  msg += `• Email: ${email}\n`;
+  msg += `• WhatsApp: ${tel}\n`;
+  if(ciudad) msg += `• Ciudad / Provincia: ${ciudad}\n`;
+  if(nivel)  msg += `• Nivel de estudio: ${nivel}\n`;
+  msg += '\n';
+  if(carrera) msg += `📚 *Carrera de interes:* ${carrera}\n\n`;
+  if(mensaje) msg += `💬 *Consulta:* ${mensaje}\n\n`;
+  msg += '---\nEnviado desde el sitio web de Universidad FASTA Avellaneda';
+
+  const url = 'https://wa.me/5493482218923?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+
+  // Feedback visual
+  btn.textContent = '✓ Abriendo WhatsApp...';
+  btn.style.background = 'linear-gradient(135deg,#25D366,#1da851)';
+  setTimeout(()=>{
+    btn.textContent = 'Enviar solicitud por WhatsApp';
+    btn.style.background = '';
+  }, 3500);
 }
 
 // ── MODAL CARRERAS ──
@@ -781,11 +844,14 @@ const CARRERAS = [
   {fac:'eco',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Administracion de Empresas',area:'Cs. Economicas'},
   {fac:'eco',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Gestion del Talento Humano',area:'Cs. Economicas'},
   {fac:'eco',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Desarrollo de Negocios Digitales',area:'Cs. Economicas'},
+  {fac:'eco',tipo:'tipo-pos',tipoLabel:'Especializacion',nombre:'Especializacion Tributaria',area:'Cs. Economicas'},
+  {fac:'eco',tipo:'tipo-pos',tipoLabel:'Especializacion',nombre:'Especializacion en Fiscalidad Internacional',area:'Cs. Economicas'},
   // INGENIERIA
   {fac:'ing',tipo:'tipo-tec',tipoLabel:'Tecnicatura',nombre:'Tec. en Higiene y Seguridad en el Trabajo',area:'Ingenieria'},
   {fac:'ing',tipo:'tipo-grado',tipoLabel:'Grado',nombre:'Lic. en Ciberseguridad',area:'Ingenieria'},
   {fac:'ing',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Higiene y Seguridad en el Trabajo',area:'Ingenieria'},
   {fac:'ing',tipo:'tipo-pos',tipoLabel:'Posgrado',nombre:'Esp. en Informatica Forense',area:'Ingenieria'},
+  {fac:'ing',tipo:'tipo-pos',tipoLabel:'Maestria',nombre:'Maestria en Ciberseguridad e Informatica Forense',area:'Ingenieria'},
   // COMUNICACION
   {fac:'com',tipo:'tipo-grado',tipoLabel:'Grado',nombre:'Lic. en Comunicacion Social',area:'Periodismo y Comunicacion'},
   {fac:'com',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Periodismo',area:'Periodismo y Comunicacion'},
@@ -799,6 +865,7 @@ const CARRERAS = [
   {fac:'jur',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Seguridad Ciudadana',area:'Cs. Juridicas y Sociales'},
   {fac:'jur',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Archivologia',area:'Cs. Juridicas y Sociales'},
   {fac:'jur',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Corretaje Inmobiliario',area:'Cs. Juridicas y Sociales'},
+  {fac:'jur',tipo:'tipo-pos',tipoLabel:'Especializacion',nombre:'Especializacion en Criminalidad y Delitos Informaticos',area:'Cs. Juridicas y Sociales'},
   // CS. EDUCACION
   {fac:'edu',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Educacion Fisica',area:'Cs. de la Educacion'},
   {fac:'edu',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Ingles',area:'Cs. de la Educacion'},
@@ -806,6 +873,8 @@ const CARRERAS = [
   {fac:'edu',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Psicopedagogia',area:'Cs. de la Educacion'},
   {fac:'edu',tipo:'tipo-lic',tipoLabel:'Ciclo Complementario',nombre:'Lic. en Tecnologia Educativa',area:'Cs. de la Educacion'},
   {fac:'edu',tipo:'tipo-pos',tipoLabel:'Posgrado',nombre:'Esp. en Planificacion y Gestion Estrategica en Proyectos Educativos',area:'Cs. de la Educacion'},
+  {fac:'edu',tipo:'tipo-pos',tipoLabel:'Maestria',nombre:'Maestria en Tecnologias Digitales para la Innovacion Educativa',area:'Cs. de la Educacion'},
+  {fac:'edu',tipo:'tipo-pos',tipoLabel:'Especializacion',nombre:'Especializacion en Ciencias Aplicadas al Rendimiento Motriz',area:'Cs. de la Educacion'},
   // HOSPITALIDAD
   {fac:'hos',tipo:'tipo-tec',tipoLabel:'Tecnicatura',nombre:'Tec. Univ. en Turismo',area:'Hospitalidad'},
   {fac:'hos',tipo:'tipo-tec',tipoLabel:'Tecnicatura',nombre:'Tec. Univ. en Hoteleria',area:'Hospitalidad'},
